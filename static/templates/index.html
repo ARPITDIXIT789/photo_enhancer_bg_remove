@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Tools | Arpit Dixit</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container" data-aos="fade-up">
+        <h1>📸 Photo Editor</h1>
+        <form method="POST" action="/upload" enctype="multipart/form-data">
+            <input type="file" name="image" accept="image/*" required>
+            <button type="submit">Upload</button>
+        </form>
+
+        {% if filename %}
+        <div class="preview" data-aos="zoom-in">
+            <h2>Preview:</h2>
+            <img src="/uploads/{{ filename }}" width="300" class="preview-image"><br>
+            <div class="button-group">
+                <a href="/remove_bg/{{ filename }}"><button>Remove Background</button></a>
+                <a href="/enhance/{{ filename }}"><button>Enhance Image</button></a>
+            </div>
+        </div>
+        {% endif %}
+
+        <footer>&copy; 2025 Arpit Dixit | All rights reserved.</footer>
+    </div>
+
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>
+
